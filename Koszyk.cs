@@ -11,11 +11,12 @@ namespace WpfApplication4
         public List<Produkt> Zakupy;
         public Koszyk() 
         {
-            Zakupy = new List<Produkt>();
         }
-        public void DodajProdukt(string Nazwa,double Cena,int Ilosc)
+        public List<Produkt> DodajProdukt(string Nazwa,double Cena,int Ilosc)
         {
+            Zakupy = new List<Produkt>();
             Zakupy.Add(new Produkt(Nazwa, Cena, Ilosc));
+            return Zakupy;
         }
     }
 }

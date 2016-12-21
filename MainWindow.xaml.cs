@@ -21,12 +21,14 @@ namespace WpfApplication4
     public partial class MainWindow : Window
     {
         Koszyk koszyk = new Koszyk();
+        
+       
         public MainWindow()
         {
             InitializeComponent();
             pobierzIlosc.Text = "1";
             listaProduktow.ItemsSource = koszyk.Zakupy;
-            CollectionView widokListy = (CollectionView)CollectionViewSource.GetDefaultView(listaProduktow.ItemsSource);
+            CollectionView Widok = (CollectionView)CollectionViewSource.GetDefaultView(listaProduktow.ItemsSource);
         }
         
         private void dodajClick(object sender, RoutedEventArgs e)
@@ -40,8 +42,9 @@ namespace WpfApplication4
             {
                 try
                 {
-                  koszyk.DodajProdukt(pobierzNazwe.Text,Convert.ToDouble(pobierzCene.Text),Convert.ToInt32(pobierzIlosc.Text));
-                  
+                    koszyk.DodajProdukt(pobierzNazwe.Text, Convert.ToDouble(pobierzCene.Text), Convert.ToInt32(pobierzIlosc.Text));
+                    listaProduktow.ItemsSource = koszyk.Zakupy;
+                    CollectionView Widok = (CollectionView)CollectionViewSource.GetDefaultView(listaProduktow.ItemsSource);
                 }
                 catch
                 {
