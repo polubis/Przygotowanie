@@ -8,9 +8,9 @@ namespace WpfApplication4
 {
     class Produkt:ICloneable
     {
-        private string Nazwa;
-        private double cenaJednostkowa;
-        private int Ilosc;
+        public string Nazwa { get; set; }
+        public double cenaJednostkowa { get; set; }
+        public int Ilosc { get; set; }
         public Produkt() { }
         public Produkt(string Nazwa,double cenaJednostkowa,int Ilosc)
         {

@@ -1,28 +1,30 @@
 ﻿<Window x:Class="WpfApplication4.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="576.882" Width="729.127">
+        Title="MainWindow" Height="576.882" Width="741.067">
     <Grid HorizontalAlignment="Left" Margin="0,0,0,0.4" Width="726">
         <WrapPanel Margin="0,0,0.2,226.4">
             <Button Width="160" Height="63" Margin="10" Content="Dodaj produkt" FontWeight="Bold" FontSize="16" Click="dodajClick"/>
             <Button Width="160" Height="63" Margin="10" Content="Skopiuj ostatni" FontWeight="Bold" FontSize="16"/>
-            <Button Width="160" Height="63" Margin="10" Content="Skasuj" FontWeight="Bold" FontSize="16"/>
-            <Button Width="160" Height="63" Margin="10" Content="Wydrukuj" FontWeight="Bold" FontSize="16"/>
+            <Button Width="160" Height="63" Margin="10" Content="Skasuj" FontWeight="Bold" FontSize="16" Click="skasujClick"/>
+            <Button Width="160" Height="63" Margin="10" Content="Wydrukuj" FontWeight="Bold" FontSize="16" Click="wydrukujClick"/>
         </WrapPanel>
         <WrapPanel Margin="181,78,181,371.4">
-            <Button Width="160" Height="63" Margin="10" Content="Wyczysc koszyk" FontWeight="Bold" FontSize="16"/>
-            <Button Width="160" Height="63" Margin="10" Content="Wyjscie" FontWeight="Bold" FontSize="16"/>
+            <Button Width="160" Height="63" Margin="10" Content="Wyczysc koszyk" FontWeight="Bold" FontSize="16" Click="wyczyscWszystko"/>
+            <Button Width="160" Height="63" Margin="10" Content="Wyjscie" FontWeight="Bold" FontSize="16" Click="wyjscieClick"/>
         </WrapPanel>
-        <WrapPanel Margin="10,256,413,114.4">
+        <WrapPanel Margin="10,256,413,9.6">
             <Label Height="38" Width="117" Content="Nazwa" FontWeight="Bold" FontSize="16" Margin="10"/>
             <TextBox Width="163" Height="34" x:Name="pobierzNazwe"/>
             <Label Height="38" Width="117" Content="Cena" FontWeight="Bold" FontSize="16" Margin="10"/>
             <TextBox Width="163" Height="34" x:Name="pobierzCene"/>
             <Label Height="38" Width="117" Content="Ilość" FontWeight="Bold" FontSize="16" Margin="10"/>
             <TextBox Width="163" Height="34" x:Name="pobierzIlosc"/>
+            <Label Height="38" Width="117" Content="Suma" FontWeight="Bold" FontSize="16" Margin="10"/>
+            <TextBox Width="163" Height="34" x:Name="wynikSumy" />
         </WrapPanel>
         <DockPanel Margin="352,236,10,10.4">
-            <ListView x:Name="listaProduktow" Height="302" VerticalAlignment="Top" Width="364">
+            <ListView x:Name="listaProduktow" Height="291" VerticalAlignment="Top" Width="364">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header="Nazwa" Width="200" DisplayMemberBinding="{Binding Nazwa}"/>

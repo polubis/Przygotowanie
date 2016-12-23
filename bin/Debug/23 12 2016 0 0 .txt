@@ -1,0 +1,7 @@
+Data: 23 12 2016 0 0 .txtCzas: 0 0
+Nazwa: asdasd,Cena: 5,Ilość: 1
+Nazwa: asdasd,Cena: 5,Ilość: 1
+Nazwa: asdasd,Cena: 5,Ilość: 1
+Nazwa: asdasd,Cena: 5,Ilość: 1
+Nazwa: asdasd,Cena: 5,Ilość: 1
+Zaplacono : 25

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,15 +23,14 @@ namespace WpfApplication4
     {
         Koszyk koszyk = new Koszyk();
         
-       
         public MainWindow()
         {
             InitializeComponent();
             pobierzIlosc.Text = "1";
-            listaProduktow.ItemsSource = koszyk.Zakupy;
-            CollectionView Widok = (CollectionView)CollectionViewSource.GetDefaultView(listaProduktow.ItemsSource);
+            wynikSumy.Text = "0";
+            
         }
-        
+     
         private void dodajClick(object sender, RoutedEventArgs e)
         {
             
@@ -42,9 +42,10 @@ namespace WpfApplication4
             {
                 try
                 {
-                    koszyk.DodajProdukt(pobierzNazwe.Text, Convert.ToDouble(pobierzCene.Text), Convert.ToInt32(pobierzIlosc.Text));
+                    koszyk.DodajProdukt(Convert.ToString(pobierzNazwe.Text), Double.Parse(pobierzCene.Text), Convert.ToInt32(pobierzIlosc.Text));
                     listaProduktow.ItemsSource = koszyk.Zakupy;
-                    CollectionView Widok = (CollectionView)CollectionViewSource.GetDefaultView(listaProduktow.ItemsSource);
+                    CollectionViewSource.GetDefaultView(listaProduktow.ItemsSource).Refresh();
+                    wynikSumy.Text = koszyk.obliczSume();
                 }
                 catch
                 {
@@ -52,6 +53,43 @@ namespace WpfApplication4
                 }
             }
         }
+
+        private void skasujClick(object sender, RoutedEventArgs e)
+        {
+            int wybranyWiersz = listaProduktow.SelectedIndex;
+            koszyk.usunWybrany(wybranyWiersz);
+            CollectionViewSource.GetDefaultView(listaProduktow.ItemsSource).Refresh();
+        }
+        private void czyszczeBoxy()
+        {
+            wynikSumy.Text = "0";
+            pobierzCene.Text = "";
+            pobierzIlosc.Text = "1";
+            pobierzNazwe.Text = "";
+        }
+        private void wyczyscWszystko(object sender, RoutedEventArgs e)
+        {
+            koszyk.Zakupy.Clear();
+            CollectionViewSource.GetDefaultView(listaProduktow.ItemsSource).Refresh();
+            czyszczeBoxy();
+        }
+
+        private void wyjscieClick(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+
+        private void wydrukujClick(object sender, RoutedEventArgs e)
+        {
+            string Suma = wynikSumy.Text;
+            koszyk.zapisDoPliku(Suma);
+            koszyk.Zakupy.Clear();
+            CollectionViewSource.GetDefaultView(listaProduktow.ItemsSource).Refresh();
+            MessageBox.Show("Dziekujemy za skorzystanie z naszych uslug. Miłego dnia.");
+            czyszczeBoxy();
+        }
+
+    
 
           
     }
