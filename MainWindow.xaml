@@ -5,7 +5,7 @@
     <Grid HorizontalAlignment="Left" Margin="0,0,0,0.4" Width="726">
         <WrapPanel Margin="0,0,0.2,226.4">
             <Button Width="160" Height="63" Margin="10" Content="Dodaj produkt" FontWeight="Bold" FontSize="16" Click="dodajClick"/>
-            <Button Width="160" Height="63" Margin="10" Content="Skopiuj ostatni" FontWeight="Bold" FontSize="16"/>
+            <Button Width="160" Height="63" Margin="10" Content="Skopiuj ostatni" FontWeight="Bold" FontSize="16" Click="kopiujClick"/>
             <Button Width="160" Height="63" Margin="10" Content="Skasuj" FontWeight="Bold" FontSize="16" Click="skasujClick"/>
             <Button Width="160" Height="63" Margin="10" Content="Wydrukuj" FontWeight="Bold" FontSize="16" Click="wydrukujClick"/>
         </WrapPanel>

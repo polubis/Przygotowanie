@@ -57,8 +57,11 @@ namespace WpfApplication4
         private void skasujClick(object sender, RoutedEventArgs e)
         {
             int wybranyWiersz = listaProduktow.SelectedIndex;
-            koszyk.usunWybrany(wybranyWiersz);
+            Produkt wybranaWartosc = (Produkt)listaProduktow.SelectedItem;
+            wynikSumy.Text = koszyk.usunWybrany(wybranyWiersz, Double.Parse(wynikSumy.Text), wybranaWartosc);
+           
             CollectionViewSource.GetDefaultView(listaProduktow.ItemsSource).Refresh();
+
         }
         private void czyszczeBoxy()
         {
@@ -87,6 +90,12 @@ namespace WpfApplication4
             CollectionViewSource.GetDefaultView(listaProduktow.ItemsSource).Refresh();
             MessageBox.Show("Dziekujemy za skorzystanie z naszych uslug. Miłego dnia.");
             czyszczeBoxy();
+        }
+
+        private void kopiujClick(object sender, RoutedEventArgs e)
+        {
+            koszyk.kopiujeOstatni();
+            CollectionViewSource.GetDefaultView(listaProduktow.ItemsSource).Refresh();
         }
 
     

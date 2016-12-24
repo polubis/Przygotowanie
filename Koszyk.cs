@@ -19,10 +19,15 @@ namespace WpfApplication4
             Zakupy.Add(new Produkt(Nazwa, Cena, Ilosc));
             return Zakupy;
         }
-        public void usunWybrany(int wybranyWiersz)
+        public string usunWybrany(int wybranyWiersz,double Suma,Produkt obiekt)
         {
             if(wybranyWiersz!=-1)
-            Zakupy.RemoveAt(wybranyWiersz);
+            { 
+              Zakupy.RemoveAt(wybranyWiersz);
+              Suma = Suma - obiekt.cenaJednostkowa;
+             
+            }
+            return Suma.ToString();
         }
         public string obliczSume()
         {
@@ -65,7 +70,15 @@ namespace WpfApplication4
                 TextWriter Zapis = new StreamWriter(Sciezka, true);
                 TworzeFakture(Zapis,Suma,Sciezka,Czas);
             }
-
+            
+        }
+        public void kopiujeOstatni()
+        {
+            int rozmiarListy = Zakupy.Count;
+            Produkt ostatniElement = (Produkt)Zakupy[rozmiarListy - 1];
+            Produkt kopia = new Produkt();
+            kopia = (Produkt)ostatniElement.Clone();
+            Zakupy.Add(new Produkt(kopia.Nazwa, kopia.cenaJednostkowa, kopia.Ilosc));
         }
     }
 }
